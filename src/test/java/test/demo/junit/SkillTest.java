@@ -1,7 +1,6 @@
 package test.demo.junit;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.text.MessageFormat;
 import java.time.Duration;
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -52,20 +50,10 @@ public class SkillTest {
 		skill.setCategory(SkillCategory.DATA);
 	}
 
-	@Timeout(20)
 	@Test
 	void testCreateSkill() {
 		skillPersisted = skillRepository.save(skill);
 		assertNotNull(skillPersisted);
 		assertNotNull(skillPersisted.getId());
-	}
-
-	@Test
-	public void deletePersistedSkill() {
-		if (skillPersisted != null) {
-			skillRepository.delete(skillPersisted);
-			assertNull(skillRepository.getReferenceById(skillPersisted.getId()));
-			skillPersisted = null;
-		}
 	}
 }

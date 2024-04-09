@@ -19,7 +19,7 @@ import test.demo.repository.SkillRepository;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class ProfilTest {
+class ProfilTest {
 
 	private Profil profil;
 
@@ -36,7 +36,7 @@ public class ProfilTest {
 	}
 
 	@Test
-	public void createProfil() {
+	void createProfil() {
 
 		List<Skill> skills = initSkills();
 

@@ -23,9 +23,7 @@ public class ProfilController {
 
 	@PostMapping("/profil/create")
 	public void createProfil(@RequestBody Profil newProfil) {
-		newProfil.getSkills().forEach(e -> {
-			skillRepository.save(e);
-		});
+		newProfil.getSkills().forEach(e -> skillRepository.save(e));
 		profilRepository.save(newProfil);
 	}
 

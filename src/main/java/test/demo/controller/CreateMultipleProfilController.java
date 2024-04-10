@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,12 +14,15 @@ import test.demo.model.cons.SkillCategory;
 import test.demo.repository.ProfilRepository;
 
 @RestController
-public class createMultipleProfilController {
+public class CreateMultipleProfilController {
 
-	@Autowired
-	private ProfilRepository profilRepository;
+	private final ProfilRepository profilRepository;
 
 	private List<Skill> skills;
+
+	public CreateMultipleProfilController(ProfilRepository profilRepository) {
+		this.profilRepository = profilRepository;
+	}
 
 	private void initSkills() {
 		skills = new ArrayList<>();

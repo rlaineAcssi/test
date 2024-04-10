@@ -1,6 +1,7 @@
 package test.demo.security;
 
 import java.util.Collection;
+import java.util.Objects;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,8 +19,27 @@ public class ApiKeyAuthentication extends AbstractAuthenticationToken implements
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(apiKey);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ApiKeyAuthentication other = (ApiKeyAuthentication) obj;
+		return Objects.equals(apiKey, other.apiKey);
+	}
+
+	@Override
 	public Object getCredentials() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

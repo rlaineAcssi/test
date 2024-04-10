@@ -8,11 +8,10 @@ import jakarta.servlet.http.HttpServletRequest;
 
 public class AuthenticationService {
 
-	// TODO bdd init
 	private static final String AUTH_TOKEN_HEADER_NAME = "X-API-KEY";
 	private static final String AUTH_TOKEN = "no-database";
 
-	public AuthenticationService() {
+	private AuthenticationService() {
 		throw new IllegalStateException("Utility class");
 	}
 

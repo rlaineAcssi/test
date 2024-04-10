@@ -15,11 +15,15 @@ import test.demo.repository.SkillRepository;
 @RestController
 public class ProfilController {
 
-	@Autowired
-	private ProfilRepository profilRepository;
+	private final ProfilRepository profilRepository;
+
+	private final SkillRepository skillRepository;
 
 	@Autowired
-	private SkillRepository skillRepository;
+	public ProfilController(ProfilRepository profilRepository, SkillRepository skillRepository) {
+		this.profilRepository = profilRepository;
+		this.skillRepository = skillRepository;
+	}
 
 	@PostMapping("/profil/create")
 	public void createProfil(@RequestBody Profil newProfil) {

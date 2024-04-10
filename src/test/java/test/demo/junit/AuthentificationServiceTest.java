@@ -11,12 +11,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import test.demo.security.AuthenticationService;
 
 @SpringBootTest
-public class AuthentificationServiceTest {
-
-	@Test
-	void assertExceptionWHenUsePublicConstructor() {
-		assertThrows(IllegalStateException.class, () -> new AuthenticationService());
-	}
+class AuthentificationServiceTest {
 
 	@Test
 	void getInvalidAuthentificationThrowError() {

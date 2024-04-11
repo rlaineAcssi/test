@@ -1,9 +1,5 @@
-FROM eclipse-temurin:21-jdk-jammy AS build
-
-WORKDIR /app
-
-COPY pom.xml .
-COPY src ./src
-
-# Build the application using Maven
-RUN mvn clean package -DskipTests
+FROM eclipse-temurin:21-jdk-alpine
+ARG JAR_FILE=target/demo-0.0.1-SNAPSHOT.jar
+WORKDIR /opt/app
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","app.jar"]
